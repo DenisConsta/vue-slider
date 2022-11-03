@@ -37,7 +37,8 @@ createApp({
           description: "Colombia - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, aliquid?"
         }
       ],
-      currentImg: 0
+      currentImg: 0,
+      isOver : false
 
     }
   },
@@ -52,6 +53,15 @@ createApp({
         if (this.currentImg === 0) this.currentImg = this.countries.length;
         this.currentImg--;
       }
+    },
+    InitAutoPlay(){
+      return setInterval(() => {
+        if(!this.isOver)
+          this.moveSlide(true);
+      }, 3000);
     }
+  },
+  mounted(){
+    this.InitAutoPlay();
   }
 }).mount('#app');
